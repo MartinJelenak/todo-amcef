@@ -1,4 +1,4 @@
-export interface ToDoItem {
+export interface ToDoItemType {
     id: number;
     title: string;
     description: string;
@@ -6,8 +6,12 @@ export interface ToDoItem {
     completed: boolean;
 }
 
-export interface ToDoList {
+export interface ToDoListType {
     id: number;
     name: string;
-    items: ToDoItem[];
+    todos: ToDoItemType[];
+}
+
+export interface ToDoListContainerProps {
+    todos: ToDoListType[];
 }
