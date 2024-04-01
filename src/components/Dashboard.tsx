@@ -5,7 +5,7 @@ import {
     XMarkIcon,
 } from '@heroicons/react/24/outline'
 import ToDoListContainer from './ToDoListContainer'
-import ToDoItems from './ToDoItemsContainer'
+import TodoItemContainer from './ToDoItemContainer'
 import { ToDoListContainerProps } from '../types'
 import { Routes, Route, Link } from 'react-router-dom';
 
@@ -134,7 +134,7 @@ export default function Dashboard({ todos }: ToDoListContainerProps) {
                 <div className="px-4 sm:px-6 lg:px-8">
                     <Routes>
                         <Route path="/todos" element={<ToDoListContainer />} />
-                        <Route path="/items/:todoId" element={<ToDoItems todos={todos} />} />
+                        <Route path="/list/:todoId" element={<TodoItemContainer todos={todos} />} />
                     </Routes>
                 </div>
             </main>

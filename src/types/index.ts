@@ -4,6 +4,7 @@ export interface ToDoItemType {
     description: string;
     deadline: Date;
     completed: boolean;
+    todolistId: string;
 }
 
 export interface ToDoListType {

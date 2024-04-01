@@ -2,7 +2,7 @@ import { useQuery } from 'react-query';
 import ToDoList from './ToDoList';
 
 
-export default function ToDoListContainer() {
+export default function TooListContainer() {
     const { isLoading, error, data } = useQuery('todos', () =>
         fetch('https://6602e5e39d7276a75554873a.mockapi.io/apiamcef/v1/todolists').then(res =>
             res.json()
