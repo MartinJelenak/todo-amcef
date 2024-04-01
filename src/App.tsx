@@ -1,10 +1,12 @@
-import ToDoListContainer from './components/ToDoListContainer'
-// import Dashboard from './components/Dashboard's
-function App() {
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import DashboardContainer from './components/DashboardContainer';
 
+function App() {
   return (
-    <ToDoListContainer />
-  )
+    <Router>
+      < DashboardContainer />
+    </Router>
+  );
 }
 
-export default App
+export default App;

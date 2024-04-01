@@ -1,5 +1,5 @@
 export interface ToDoItemType {
-    id: number;
+    id: string;
     title: string;
     description: string;
     deadline: Date;
@@ -7,7 +7,7 @@ export interface ToDoItemType {
 }
 
 export interface ToDoListType {
-    id: number;
+    id: string;
     name: string;
     todos: ToDoItemType[];
 }
