@@ -1,30 +1,28 @@
-// import { useFormik } from 'formik';
-// import * as Yup from 'yup';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 interface TextInputProps {
     setOpenNewList: React.Dispatch<React.SetStateAction<boolean>>;
+    handleCreateToDoList: (name: string) => void;
 }
 
+export default function NewList({ setOpenNewList, handleCreateToDoList }: TextInputProps) {
+    const formik = useFormik({
+        initialValues: {
+            name: ''
+        },
+        validationSchema: Yup.object({
+            name: Yup.string()
+                .required('Required')
+        }),
+        onSubmit: values => {
+            setOpenNewList(false);
+            handleCreateToDoList(values.name);
+        },
+    });
 
-// const formik = useFormik({
-//     initialValues: {
-//         name: ''
-//     },
-//     validationSchema: Yup.object({
-//         name: Yup.string()
-//             .required('Required')
-//             .min(3, 'Must be at least 3 characters')
-//             .max(20, 'Must be 20 characters or less')
-//     }),
-//     onSubmit: values => {
-//         console.log(values);
-//     },
-// });
-
-export default function NewList({ setOpenNewList }: TextInputProps) {
     return (
-        // <form onSubmit={formik.handleSubmit} className=''>
-        <>
+        <form onSubmit={formik.handleSubmit} className=''>
             <div className=" mb-4 px-1 flex rounded-md bg-white/10 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
                 <input
                     className=" flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
@@ -32,7 +30,8 @@ export default function NewList({ setOpenNewList }: TextInputProps) {
                     name="name"
                     type="text"
                     autoFocus
-                // onChange={formik.handleChange}
+                    onChange={formik.handleChange}
+                    value={formik.values.name}
                 />
             </div >
             <div className=' flex gap-2'>
@@ -49,7 +48,6 @@ export default function NewList({ setOpenNewList }: TextInputProps) {
                     Submit
                 </button>
             </div>
-        </>
-        // </form>
+        </form>
     )
 }

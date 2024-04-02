@@ -29,15 +29,12 @@ export const deleteToDo = async ({ todoListId, todoId }: { todoListId: string, t
 
 
 
-
-
-
 export const fetchToDoLists = async () => {
     const response = await axios.get(`${API_BASE_URL}/todolists`);
     return response.data;
 }
 
-export const createToDoList = async (name: string) => {
+export const createToDoList = async ({ name }: { name: string }) => {
     const response = await axios.post(`${API_BASE_URL}/todolists`, {
         name,
     });

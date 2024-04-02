@@ -9,7 +9,7 @@ import TodoItemContainer from './ToDoItemContainer'
 import { ToDoListContainerProps } from '../types'
 import { Routes, Route } from 'react-router-dom';
 import { AcademicCapIcon } from "@heroicons/react/24/outline";
-import NewList from './NewList'
+import NewListContainer from './NewListContainer'
 
 export default function Dashboard({ todos }: ToDoListContainerProps) {
     const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -95,19 +95,21 @@ export default function Dashboard({ todos }: ToDoListContainerProps) {
                             </li>
                             <li className="-mx-6 mt-auto p-4">
                                 {
-                                    openNewList ? <NewList setOpenNewList={setOpenNewList} /> : <button
-                                        type="button"
-                                        onClick={() => {
-                                            console.log("first")
-                                            setOpenNewList(true)
-                                        }
-                                        }
-                                        className="flex w-full items-center gap-x-4 px-6 py-3 text-lg font-semibold leading-6 text-whit bg-blue-500 text-white rounded-md justify-center"
-                                    >
-                                        <span>New list</span>
-                                    </button>
+                                    openNewList
+                                        ?
+                                        <NewListContainer setOpenNewList={setOpenNewList} />
+                                        :
+                                        <button
+                                            type="button"
+                                            onClick={() => {
+                                                console.log("first")
+                                                setOpenNewList(true)
+                                            }}
+                                            className="flex w-full items-center gap-x-4 px-6 py-3 text-lg font-semibold leading-6 text-whit bg-blue-500 text-white rounded-md justify-center"
+                                        >
+                                            <span>New list</span>
+                                        </button>
                                 }
-
                             </li>
                         </ul>
                     </nav>
