@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query';
-import { fetchToDoLists } from '../services/api'; // Predpokladajme, že cesta je správna
+import { fetchToDoLists } from '../services/api';
 import Dashboard from './Dashboard';
 
 export default function DashboardContainer() {

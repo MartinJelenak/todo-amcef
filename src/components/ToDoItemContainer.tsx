@@ -44,12 +44,10 @@ export default function TodoItemContainer({ todos }: ToDoListContainerProps) {
     }
 
     const currentTodos = itemsFromList.filter(todo => {
-        // Prvá podmienka: filtrovanie podľa stavu úlohy
         const statusMatch = filter === TodoFilter.All ||
             (filter === TodoFilter.Active && !todo.completed) ||
             (filter === TodoFilter.Completed && todo.completed);
 
-        // Druhá podmienka: filtrovanie podľa textu zadaneho používateľom
         const searchTextMatch = todo.title.toLowerCase().includes(searchText.toLowerCase()) ||
             todo.description.toLowerCase().includes(searchText.toLowerCase());
 
