@@ -11,7 +11,6 @@ export default function SearchBar({ setSearchText }: SearchBarProps) {
             <form className="flex items-center w-full"
                 onSubmit={(e) => {
                     e.preventDefault();
-                    console.log('Search')
                 }}>
                 <div className="relative w-full">
                     <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">

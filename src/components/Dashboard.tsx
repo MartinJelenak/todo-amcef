@@ -102,7 +102,6 @@ export default function Dashboard({ todos }: ToDoListContainerProps) {
                                         <button
                                             type="button"
                                             onClick={() => {
-                                                console.log("first")
                                                 setOpenNewList(true)
                                             }}
                                             className="flex w-full items-center gap-x-4 px-6 py-3 text-lg font-semibold leading-6 text-whit bg-blue-500 text-white rounded-md justify-center"

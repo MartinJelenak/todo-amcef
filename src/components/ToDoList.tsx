@@ -6,7 +6,6 @@ import { twMerge } from 'tailwind-merge';
 
 const ToDoList = ({ todos }: ToDoListContainerProps) => {
     const [selected, setSelected] = useState('');
-    console.log(todos)
 
     return (
         <>
