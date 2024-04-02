@@ -58,7 +58,7 @@ export default function CreateToDo({ handleCreateToDo, ToDoListId }: TextInputPr
                             name="dedline"
                             type="dateTime-local"
                             onChange={e => formik.setFieldValue('deadline', e.target.value)}
-                            value={formik.values.deadline}
+                            value={formik.values.deadline.substring(0, 16)}
                         />
                     </div>
                     <div className=' flex justify-end'>
