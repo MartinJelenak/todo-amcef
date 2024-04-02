@@ -7,7 +7,8 @@ import {
 import ToDoListContainer from './ToDoListContainer'
 import TodoItemContainer from './ToDoItemContainer'
 import { ToDoListContainerProps } from '../types'
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import CreateToDoContainer from './CreateToDoContainer';
 
 // function classNames(...classes) {
 //     return classes.filter(Boolean).join(' ')
@@ -130,10 +131,9 @@ export default function Dashboard({ todos }: ToDoListContainerProps) {
                 </a>
             </div>
 
-            <main className="py-10 lg:pl-72 bg-slate-800 h-full">
+            <main className="py-10 lg:pl-72 bg-cove ">
                 <div className="px-4 sm:px-6 lg:px-8">
                     <Routes>
-                        <Route path="/todos" element={<ToDoListContainer />} />
                         <Route path="/list/:todoId" element={<TodoItemContainer todos={todos} />} />
                     </Routes>
                 </div>

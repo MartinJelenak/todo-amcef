@@ -1,18 +1,28 @@
 import { ToDoItemType } from '../types'
+import { TrashIcon } from "@heroicons/react/24/outline";
+
+
+
 
 interface ToDoItemProps {
     item: ToDoItemType;
     onToggleCompleted: (todoListId: string, todoId: string, completed: boolean) => void;
+    handleDeleteToDo: (todoListId: string, todoId: string) => void;
 }
 
 
-export default function ToDoItem({ item, onToggleCompleted }: ToDoItemProps) {
+export default function ToDoItem({ item, onToggleCompleted, handleDeleteToDo }: ToDoItemProps) {
     const { id, title, description, deadline, completed, todolistId } = item;
 
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChangeCompleted = (event: React.ChangeEvent<HTMLInputElement>) => {
         onToggleCompleted(todolistId, id, event.target.checked);
     };
+
+    const handleDelete = () => {
+        handleDeleteToDo(todolistId, id);
+    }
+
 
 
     return (
@@ -46,20 +56,28 @@ export default function ToDoItem({ item, onToggleCompleted }: ToDoItemProps) {
                                 type="checkbox"
                                 className="h-4 w-4 rounded custom-checkbox "
                                 checked={completed}
-                                onChange={handleChange}
-
+                                onChange={handleChangeCompleted}
                             />
                         </div>
-                        <div className="ml-3 text-sm leading-6">
+                        <div className="ml-3 text-sm leading-6 w-full">
                             <div>
-                                <p>{deadline.toString()}</p>
-                                <label htmlFor="comments" className="font-medium text-gray-400">
-                                    {title}, {id}, {todolistId}
-                                </label>
+                                <div className='flex justify-between'>
+                                    <label htmlFor="comments" className="font-medium text-gray-300">
+                                        {title}, {id}, {todolistId}
+                                    </label>
+                                    <button className='p-1 hover:border-spacing-0'
+                                        onClick={handleDelete}>
+                                        <TrashIcon className="h-5 w-5 text-gray-500" />
+                                    </button>
+
+                                </div>
                             </div>
-                            <p id="comments-description" className="text-gray-500">
+                            <p id="comments-description" className="text-gray-400">
                                 {description}
                             </p>
+                            <div className='flex justify-end'>
+                                <p className="text-gray-500">{deadline.toString()}</p>
+                            </div>
                         </div>
                     </div>
                 </div>

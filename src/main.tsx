@@ -7,6 +7,8 @@ import './index.css';
 const queryClient = new QueryClient();
 let root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
+document.body.className = "bg-gray-800 text-white";
+
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>

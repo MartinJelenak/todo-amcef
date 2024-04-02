@@ -2,11 +2,9 @@ import { ToDoListContainerProps } from "../types"
 import { useParams } from 'react-router-dom';
 import ToDoItem from "./ToDoItem";
 import useFilteredToDos from "../hooks/useFilteredToDos";
-import { useMutation, useQueryClient } from 'react-query';
-import { updateTodoCompleted, createToDo } from '../services/api';
-import CreateToDo from "./CreateToDo";
-
-
+import { Mutation, useMutation, useQueryClient } from 'react-query';
+import { updateTodoCompleted, deleteToDo } from '../services/api';
+import CreateToDoContainer from "./CreateToDoContainer";
 
 export default function TodoItemContainer({ todos }: ToDoListContainerProps) {
 
@@ -14,8 +12,6 @@ export default function TodoItemContainer({ todos }: ToDoListContainerProps) {
     const queryClient = useQueryClient();
 
     const filteredTodos = useFilteredToDos(todos, todoId ?? "");
-
-
 
     const mutationCompleted = useMutation(updateTodoCompleted, {
         onSuccess: () => {
@@ -27,17 +23,16 @@ export default function TodoItemContainer({ todos }: ToDoListContainerProps) {
         mutationCompleted.mutate({ todoListId, todoId, completed });
     };
 
-
-
-    const mutationCreateToDo = useMutation(createToDo, {
+    const mutationDeleteToDo = useMutation(deleteToDo, {
         onSuccess: () => {
             queryClient.invalidateQueries('todos');
         },
     });
 
-    const handleCreateToDo = (todoListId: string, title: string, description: string, deadline: Date) => {
-        mutationCreateToDo.mutate({ todoListId, title, description, deadline });
+    const handleDeleteToDo = (todoListId: string, todoId: string) => {
+        mutationDeleteToDo.mutate({ todoListId, todoId });
     }
+
 
 
 
@@ -45,13 +40,14 @@ export default function TodoItemContainer({ todos }: ToDoListContainerProps) {
         <div className="flex flex-row space-x-4">
             <div className="w-1/2">
                 {filteredTodos.map(item => (
-                    <ToDoItem key={item.id} item={item} onToggleCompleted={handleToggleCompleted} />
+                    <ToDoItem key={item.id} item={item} onToggleCompleted={handleToggleCompleted} handleDeleteToDo={handleDeleteToDo} />
                 ))}
             </div>
             <div className="w-1/2">
-                <CreateToDo handleCreateToDo={handleCreateToDo} ToDoListId={todoId ?? ""} />
+                <CreateToDoContainer />
             </div>
         </div>
+
     );
 
 }

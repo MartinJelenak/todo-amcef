@@ -3,7 +3,6 @@ import axios from 'axios';
 const API_BASE_URL = 'https://6602e5e39d7276a75554873a.mockapi.io/apiamcef/v1';
 
 export const updateTodoCompleted = async ({ todoListId, todoId, completed }: { todoListId: string, todoId: string, completed: boolean }): Promise<any> => {
-    console.log(todoListId, todoId, completed)
     const url = `${API_BASE_URL}/todolists/${todoListId}/todos/${todoId}`; // Upravená URL
     const response = await axios.put(url, {
         completed,
