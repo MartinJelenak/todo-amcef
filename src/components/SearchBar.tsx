@@ -7,7 +7,7 @@ interface SearchBarProps {
 
 export default function SearchBar({ setSearchText }: SearchBarProps) {
     return (
-        <div className={twMerge('sticky top-[104px] lg:top-[39px] bg-white bg-opacity-10 rounded-xl p-4 shadow-lg flex justify-between items-center gap-2 mb-2')}>
+        <div className={twMerge('sticky top-[90px] lg:top-[39px] bg-white bg-opacity-10 rounded-xl p-4 shadow-lg flex justify-between items-center gap-2 mb-2')}>
             <form className="flex items-center w-full"
                 onSubmit={(e) => {
                     e.preventDefault();

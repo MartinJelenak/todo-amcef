@@ -56,18 +56,17 @@ export default function TodoItemContainer({ todos }: ToDoListContainerProps) {
 
 
     return (
-        <div className="flex flex-row space-x-4">
-            <div className="w-1/2 2xl:w-2/3">
+        <div className=" sm:flex sm:flex-row w-full sm:space-x-4">
+            <div className="w-full sm:w-1/2 2xl:w-2/3">
                 {currentTodos.map(item => (
                     <ToDoItem key={item.id} item={item} onToggleCompleted={handleToggleCompleted} handleDeleteToDo={handleDeleteToDo} />
                 ))}
             </div>
-            <div className="w-1/2 2xl:w-1/3">
+            <div className="w-full sm:w-1/2 2xl:w-1/3">
                 <FilterContainer setFilter={setFilter} setSearchText={setSearchText} />
                 <CreateToDoContainer />
             </div>
         </div>
-
     );
 
 }

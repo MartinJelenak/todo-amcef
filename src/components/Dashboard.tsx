@@ -68,7 +68,23 @@ export default function Dashboard({ todos }: ToDoListContainerProps) {
                                             <ul role="list" className="-mx-2 space-y-1">
                                                 <ToDoListContainer />
                                             </ul>
-
+                                            <li className="-mx-6 mt-auto p-4">
+                                                {
+                                                    openNewList
+                                                        ?
+                                                        <NewListContainer setOpenNewList={setOpenNewList} />
+                                                        :
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => {
+                                                                setOpenNewList(true)
+                                                            }}
+                                                            className="flex w-full items-center gap-x-4 px-6 py-3 text-lg font-semibold leading-6 text-whit bg-blue-500 text-white rounded-md justify-center"
+                                                        >
+                                                            <span>New list</span>
+                                                        </button>
+                                                }
+                                            </li>
                                         </ul>
                                     </nav>
                                 </div>
