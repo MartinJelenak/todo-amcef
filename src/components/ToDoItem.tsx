@@ -15,8 +15,8 @@ export default function ToDoItem({ item, onToggleCompleted, handleDeleteToDo }: 
     const { id, title, description, deadline, completed, todolistId } = item;
 
     const deadlineDate = new Date(deadline);
-    const formattedDate = deadlineDate.toLocaleDateString('cs-CZ'); // Změňte 'cs-CZ' na váš preferovaný lokalizační kód
-    const formattedTime = deadlineDate.toLocaleTimeString('cs-CZ', { hour: '2-digit', minute: '2-digit' });
+    const formattedDate = deadlineDate.toLocaleDateString('sk-SK');
+    const formattedTime = deadlineDate.toLocaleTimeString('sk-SK', { hour: '2-digit', minute: '2-digit' });
 
 
     const handleChangeCompleted = (event: React.ChangeEvent<HTMLInputElement>) => {

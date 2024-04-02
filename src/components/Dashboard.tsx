@@ -9,9 +9,11 @@ import TodoItemContainer from './ToDoItemContainer'
 import { ToDoListContainerProps } from '../types'
 import { Routes, Route } from 'react-router-dom';
 import { AcademicCapIcon } from "@heroicons/react/24/outline";
+import NewList from './NewList'
 
 export default function Dashboard({ todos }: ToDoListContainerProps) {
     const [sidebarOpen, setSidebarOpen] = useState(false)
+    const [openNewList, setOpenNewList] = useState(false)
     return (
         <>
             <Transition.Root show={sidebarOpen} as={Fragment}>
@@ -59,6 +61,7 @@ export default function Dashboard({ todos }: ToDoListContainerProps) {
                                 <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-2 ring-1 ring-white/10">
                                     <div className="flex h-16 shrink-0 items-center">
                                         <AcademicCapIcon className="h-6 w-6 text-gray-500" />
+                                        <p>Martin Jelenak</p>
                                     </div>
                                     <nav className="flex flex-1 flex-col">
                                         <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -79,8 +82,9 @@ export default function Dashboard({ todos }: ToDoListContainerProps) {
             < div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col" >
                 {/* Sidebar component, swap this element with another sidebar if you like */}
                 < div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6" >
-                    <div className="flex h-16 shrink-0 items-center">
+                    <div className="flex h-16 shrink-0 items-center gap-4">
                         <AcademicCapIcon className="h-6 w-6 text-gray-500" />
+                        <p>Todo list, Martin Jelenak</p>
                     </div>
                     <nav className="flex flex-1 flex-col">
                         <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -90,13 +94,20 @@ export default function Dashboard({ todos }: ToDoListContainerProps) {
                                 </ul>
                             </li>
                             <li className="-mx-6 mt-auto p-4">
-                                <button
-                                    type="button"
-                                    onClick={() => { console.log('New list') }}
-                                    className="flex w-full items-center gap-x-4 px-6 py-3 text-lg font-semibold leading-6 text-whit bg-blue-500 text-white rounded-md justify-center"
-                                >
-                                    <span>New list</span>
-                                </button>
+                                {
+                                    openNewList ? <NewList setOpenNewList={setOpenNewList} /> : <button
+                                        type="button"
+                                        onClick={() => {
+                                            console.log("first")
+                                            setOpenNewList(true)
+                                        }
+                                        }
+                                        className="flex w-full items-center gap-x-4 px-6 py-3 text-lg font-semibold leading-6 text-whit bg-blue-500 text-white rounded-md justify-center"
+                                    >
+                                        <span>New list</span>
+                                    </button>
+                                }
+
                             </li>
                         </ul>
                     </nav>
@@ -113,6 +124,7 @@ export default function Dashboard({ todos }: ToDoListContainerProps) {
                     <span className="sr-only">Your profile</span>
                     <AcademicCapIcon className="h-6 w-6 text-gray-500" />
                 </a>
+                <p>Todo list, Martin Jelenak</p>
             </div>
 
             <main className="py-10 lg:pl-72 bg-cove ">
