@@ -14,6 +14,10 @@ interface ToDoItemProps {
 export default function ToDoItem({ item, onToggleCompleted, handleDeleteToDo }: ToDoItemProps) {
     const { id, title, description, deadline, completed, todolistId } = item;
 
+    const deadlineDate = new Date(deadline);
+    const formattedDate = deadlineDate.toLocaleDateString('cs-CZ'); // Změňte 'cs-CZ' na váš preferovaný lokalizační kód
+    const formattedTime = deadlineDate.toLocaleTimeString('cs-CZ', { hour: '2-digit', minute: '2-digit' });
+
 
     const handleChangeCompleted = (event: React.ChangeEvent<HTMLInputElement>) => {
         onToggleCompleted(todolistId, id, event.target.checked);
@@ -65,9 +69,12 @@ export default function ToDoItem({ item, onToggleCompleted, handleDeleteToDo }: 
                                     <label htmlFor="comments" className="font-medium text-gray-300">
                                         {title}, {id}, {todolistId}
                                     </label>
-                                    <button className='p-1 hover:border-spacing-0'
+                                    <button
+                                        type="button"
+                                        className="inline-flex rounded-md text-gray-400 "
                                         onClick={handleDelete}>
-                                        <TrashIcon className="h-5 w-5 text-gray-500" />
+                                        <span className="sr-only">Close</span>
+                                        <TrashIcon className="h-5 w-5 text-gray-500 hover:text-gray-800 focus:text-gray-200" />
                                     </button>
 
                                 </div>
@@ -75,14 +82,15 @@ export default function ToDoItem({ item, onToggleCompleted, handleDeleteToDo }: 
                             <p id="comments-description" className="text-gray-400">
                                 {description}
                             </p>
-                            <div className='flex justify-end'>
-                                <p className="text-gray-500">{deadline.toString()}</p>
+                            <div className='flex justify-end gap-3'>
+                                <p className="text-gray-500">{formattedDate}</p>
+                                <p className="text-gray-500">{formattedTime}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </fieldset>
-        </div>
+            </fieldset >
+        </div >
 
     )
 }

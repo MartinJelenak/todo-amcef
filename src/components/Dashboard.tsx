@@ -8,11 +8,7 @@ import ToDoListContainer from './ToDoListContainer'
 import TodoItemContainer from './ToDoItemContainer'
 import { ToDoListContainerProps } from '../types'
 import { Routes, Route } from 'react-router-dom';
-import CreateToDoContainer from './CreateToDoContainer';
-
-// function classNames(...classes) {
-//     return classes.filter(Boolean).join(' ')
-// }
+import { AcademicCapIcon } from "@heroicons/react/24/outline";
 
 export default function Dashboard({ todos }: ToDoListContainerProps) {
     const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -62,11 +58,7 @@ export default function Dashboard({ todos }: ToDoListContainerProps) {
                                 {/* Sidebar component, swap this element with another sidebar if you like */}
                                 <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-2 ring-1 ring-white/10">
                                     <div className="flex h-16 shrink-0 items-center">
-                                        <img
-                                            className="h-8 w-auto"
-                                            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                                            alt="Your Company"
-                                        />
+                                        <AcademicCapIcon className="h-6 w-6 text-gray-500" />
                                     </div>
                                     <nav className="flex flex-1 flex-col">
                                         <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -88,11 +80,7 @@ export default function Dashboard({ todos }: ToDoListContainerProps) {
                 {/* Sidebar component, swap this element with another sidebar if you like */}
                 < div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6" >
                     <div className="flex h-16 shrink-0 items-center">
-                        <img
-                            className="h-8 w-auto"
-                            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                            alt="Your Company"
-                        />
+                        <AcademicCapIcon className="h-6 w-6 text-gray-500" />
                     </div>
                     <nav className="flex flex-1 flex-col">
                         <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -123,11 +111,7 @@ export default function Dashboard({ todos }: ToDoListContainerProps) {
                 <div className="flex-1 text-sm font-semibold leading-6 text-white">Dashboard</div>
                 <a href="#">
                     <span className="sr-only">Your profile</span>
-                    <img
-                        className="h-8 w-8 rounded-full bg-gray-800"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                    />
+                    <AcademicCapIcon className="h-6 w-6 text-gray-500" />
                 </a>
             </div>
 
