@@ -1,11 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ToDoListContainerProps } from '../types';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
 
-
 const ToDoList = ({ todos }: ToDoListContainerProps) => {
+
     const [selected, setSelected] = useState('');
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!selected && todos && todos.length > 0) {
+            setSelected(todos[0].id);
+            navigate(`/list/${todos[0].id}`);
+        }
+    }, [todos, navigate, selected]);
+
 
     return (
         <>
